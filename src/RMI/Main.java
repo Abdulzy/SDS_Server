@@ -27,6 +27,18 @@ public class Main {
 			if (ip == null || ip.equals("") )
 				ip = InetAddress.getLocalHost().getHostAddress();
 
+			String[] arrOfStr = ip.split("\\.");
+
+			if(arrOfStr.length != 4){
+				throw new IllegalArgumentException("IP_ADDRESS has to have 3 dots");
+			}
+
+			for (String a : arrOfStr){
+				if(a.matches("^[a-zA-Z]*$")){
+					throw new IllegalArgumentException("IP_ADDRESS has to only be numbers");
+				}
+			}
+
 			System.out.println("My ip is : " + ip);
 			System.out.println("Port :  : " + port);
 
